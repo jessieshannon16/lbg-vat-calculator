@@ -2,9 +2,14 @@ pipeline{
     agent any
 
     stages{
-        stage('Checkout'){
+        stage('Install'){
             steps{
-                git branch: 'main', url: 'https://github.com/jessieshannon16/lbg-vat-calculator.git'
+                sh "npm install"
+            }
+        }
+        stage('Test'){
+            steps{
+                sh "npm test"
             }
         }
         stage('SonarQube Analysis') {
